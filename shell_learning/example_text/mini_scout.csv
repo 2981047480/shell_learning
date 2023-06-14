@@ -1,0 +1,14 @@
+系统版本, CentOS Linux release 8.5.2111 
+服务器内核版本, 4.18.0-348.7.1.el8_5.x86_64 
+根分区文件系统, ext4 
+NTP 是否可用, No 
+CPU 核心数, 2 
+CPU 指令集是否完整, Yes 
+内存大小, 1.8Gi 
+SWAP 分区大小, Disable 
+UID 为 0 的普通用户, No 
+是否存在空口令账户, No 
+selinux 状态, enabled 
+ip 信息, 10.0.4.8 172.17.0.1 172.19.0.1 
+是否存在可用 YUM 源, Yes 
+是否允许 root 登录, yes

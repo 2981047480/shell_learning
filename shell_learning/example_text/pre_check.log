@@ -1,0 +1,90 @@
+[1;33m system version [0m
+
+CentOS Linux release 8.5.2111
+[1;33m kernel [0m
+
+Linux VM-4-8-centos 4.18.0-348.7.1.el8_5.x86_64 #1 SMP Wed Dec 22 13:25:12 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+[1;33m cpu info [0m
+
+CPU(s): 2
+ssse3
+sse4
+sse4_2
+popcnt
+avx 
+avx2
+[1;33m memory [0m
+
+type total used
+Mem: 1.8Gi 704Mi
+Swap: 0B 0B
+[1;33m disk [0m
+
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1        40G   31G  7.3G  81% /
+[1;33m lsblk [0m
+
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sr0     11:0    1 60.2M  0 rom  
+vda    253:0    0   40G  0 disk 
+`-vda1 253:1    0   40G  0 part /
+[1;33m ntp [0m
+
+pre_check/pre_check.sh: line 34: ntpstat: command not found
+[1;33m yum [0m
+
+Metadata cache created.
+[1;33m iptables [0m
+
+Chain INPUT (policy ACCEPT 64M packets, 32G bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+   36  3060 DOCKER-USER  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+   36  3060 DOCKER-ISOLATION-STAGE-1  all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+    7   744 ACCEPT     all  --  *      br-c38e1c1d700e  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED
+    1    84 DOCKER     all  --  *      br-c38e1c1d700e  0.0.0.0/0            0.0.0.0/0           
+    7   444 ACCEPT     all  --  br-c38e1c1d700e !br-c38e1c1d700e  0.0.0.0/0            0.0.0.0/0           
+    1    84 ACCEPT     all  --  br-c38e1c1d700e br-c38e1c1d700e  0.0.0.0/0            0.0.0.0/0           
+64549   84M ACCEPT     all  --  *      docker0  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHED
+   13  1320 DOCKER     all  --  *      docker0  0.0.0.0/0            0.0.0.0/0           
+80007 5321K ACCEPT     all  --  docker0 !docker0  0.0.0.0/0            0.0.0.0/0           
+   13  1320 ACCEPT     all  --  docker0 docker0  0.0.0.0/0            0.0.0.0/0           
+
+Chain OUTPUT (policy ACCEPT 64M packets, 15G bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain DOCKER (2 references)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     tcp  --  !docker0 docker0  0.0.0.0/0            172.17.0.2           tcp dpt:8080
+    0     0 ACCEPT     tcp  --  !docker0 docker0  0.0.0.0/0            172.17.0.4           tcp dpt:9000
+
+Chain DOCKER-ISOLATION-STAGE-1 (1 references)
+ pkts bytes target     prot opt in     out     source               destination         
+    8   528 DOCKER-ISOLATION-STAGE-2  all  --  br-c38e1c1d700e !br-c38e1c1d700e  0.0.0.0/0            0.0.0.0/0           
+80007 5321K DOCKER-ISOLATION-STAGE-2  all  --  docker0 !docker0  0.0.0.0/0            0.0.0.0/0           
+ 145K   90M RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+
+Chain DOCKER-ISOLATION-STAGE-2 (2 references)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 DROP       all  --  *      br-c38e1c1d700e  0.0.0.0/0            0.0.0.0/0           
+    1    84 DROP       all  --  *      docker0  0.0.0.0/0            0.0.0.0/0           
+80031 5323K RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+
+Chain DOCKER-USER (1 references)
+ pkts bytes target     prot opt in     out     source               destination         
+ 145K   90M RETURN     all  --  *      *       0.0.0.0/0            0.0.0.0/0           
+[1;33m ip_check [0m
+
+10.0.4.8/22
+172.17.0.1/16
+172.19.0.1/16
+[1;33m selinux [0m
+
+Enforcing
+[1;33m root_login_check [0m
+
+PermitRootLogin yes
+[1;33m end [0m
+
