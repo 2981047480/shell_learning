@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#color
+color_theme() {
+    RED='\E[1;31m'
+    GREEN='\E[1;32m'
+    YELLOW='\E[1;33m'
+    RES='\E[0m'
+}
+color_theme
+
+
+#vars
+password='zsh1101.'
+
+#hosts
+
+#ssh
+yum install sshpass
+sshpass -p $password
+#docker
+curl -sSL https://get.daocloud.io/docker | sh
+#daemon
+sudo mkdir -p /etc/docker
+sudo cat > /etc/docker/daemon.json << EOF
+{
+    "registry-mirrors": [
+        "https://mirror.ccs.tencentyun.com"
+    ]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
