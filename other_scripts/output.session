@@ -1,0 +1,11 @@
+Script started on 2022-10-17 00:44:17+08:00
+]0;zephyr@VM-4-8-centos:~/shell/chapter2[zephyr@VM-4-8-centos chapter2]$ ll
+total 0
+-rw-rw-r-- 1 zephyr zephyr 0 Oct 17 00:44 output.session
+-rw-rw-r-- 1 zephyr zephyr 0 Oct 17 00:44 timing.log
+]0;zephyr@VM-4-8-centos:~/shell/chapter2[zephyr@VM-4-8-centos chapter2]$ cat output.session 
+]0;zephyr@VM-4-8-centos:~/shell/chapter2[zephyr@VM-4-8-centos chapter2]$ cat timing.log 
+]0;zephyr@VM-4-8-centos:~/shell/chapter2[zephyr@VM-4-8-centos chapter2]$ exit
+exit
+
+Script done on 2022-10-17 00:44:31+08:00

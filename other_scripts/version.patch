@@ -1,0 +1,9 @@
+--- version1	2022-11-13 22:09:29.436876433 +0800
++++ version2	2022-11-13 22:11:59.189512343 +0800
+@@ -1,5 +1,5 @@
+-this is the original text
+ line2
++this is the exited text
+ line3
+ line4
+ happy hacking !

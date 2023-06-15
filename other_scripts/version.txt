@@ -1,0 +1,15 @@
+sps: 1.7.0 
+sp: 2.0.0 
+sm: 2.1.0 
+sdg: 0.8 
+sdf: 2.2 
+sca: 0.6.1 
+sbr: 0.3 
+sbp: 1.1.0 
+sa: 2.3.3 
+lumen: 3.2.20 
+edge: 0.2 
+captain: 0.1.0 
+blitzreport: 0.4.1 
+armada: 0.1.0 
+
