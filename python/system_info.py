@@ -1,7 +1,7 @@
 import psutil
 import os
 import logger
-
+from IPy import IP
 
 class get_system_info():
     def __init__(self):
@@ -48,10 +48,29 @@ class get_system_info():
     
     def env_info(self):
         current_login_user = psutil.users()
-        if len(current_login_user)>1:
-            
+        current_user = os.environ['USER']
 
+    def netmask_to_address(self,netmask):
+        ip=IP(netmask)
+        try:
+            for i in ip:
+                print(i)
+        except Exception as e:
+            print('Exception: {}').format(e)
 
+    def ip_to_netmask(self,ip):
+        try:
+            netmask=IP(ip,make_net=True)
+            print(netmask)
+
+        except Exception as e:
+            print('Exception: {}').format(e)
+    
+    def 
+        
+
+get_info=get_system_info()
+ip_info=get_info.ip_to_netmask('192.168.1.0-192.168.1.3')
 
 # memoryview=system_info.get_memory_g()
 # for i in memoryview.keys():
