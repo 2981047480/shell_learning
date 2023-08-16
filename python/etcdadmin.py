@@ -93,9 +93,4 @@ class etcd_get():
 
 if __name__ == '__main__':
     main = etcd_get()
-    main.get_sensors_config()
-    # res = main.get_prefix('/sensors_analytics/sp/client/')
-    # for i in res.kvs:
-    #     print(i.key.decode('utf-8'), main.etcd_decode(i.value))
-    # config = main.etcd_get('/sensors_analytics/sp/client/redis')
-    # print(ConfigManager().create_entire_table(['/sensors_analytics/sp/client/redis'], [yaml.dump(config)]))
+    
