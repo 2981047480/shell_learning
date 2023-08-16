@@ -1,7 +1,5 @@
 import psutil
 import os
-import logger
-from IPy import IP
 
 class get_system_info():
     def __init__(self):
@@ -30,7 +28,7 @@ class get_system_info():
         '''
         cpu_info = {}
         cpu_info['count'] = psutil.cpu_count()
-        cpu_info['count_logical'] = psutil.cpu_count_logical()
+        # cpu_info['count_logical'] = psutil.cpu_count_logical()
         cpu_info['true_logical'] = psutil.cpu_count(logical=False)
         return cpu_info
     
@@ -42,8 +40,9 @@ class get_system_info():
         disk_usage = {}
         disk_info['partations'] = psutil.disk_partitions()
         for disk_column in disk_info['partations']:
-            mount_point = disk_column.mountpoint()
-            disk_usage[mount_point] = psutil.disk_usage(disk_name)
+            # print(disk_column.mountpoint)
+            mount_point = disk_column.mountpoint
+            disk_usage[mount_point] = psutil.disk_usage(disk_column.device)
         return disk_info,disk_usage
     
     def env_info(self):
@@ -66,11 +65,17 @@ class get_system_info():
         except Exception as e:
             print('Exception: {}').format(e)
     
-    def 
+    # def 
         
 
-get_info=get_system_info()
-ip_info=get_info.ip_to_netmask('192.168.1.0-192.168.1.3')
+if __name__ == '__main__':
+    get_info=get_system_info()
+    # ip_info=get_info.ip_to_netmask('192.168.1.0-192.168.1.3')
+    # cpu_info=get_info.get_cpu_info()
+    # print(cpu_info)
+    # print(get_info.get_memory_g())
+    disk_info, disk_usage = get_info.get_disk_info()
+    print(disk_info, disk_usage)
 
 # memoryview=system_info.get_memory_g()
 # for i in memoryview.keys():

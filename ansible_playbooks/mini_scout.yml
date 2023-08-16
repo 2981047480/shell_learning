@@ -1,0 +1,61 @@
+---
+- hosts: all
+  vars:
+    fio_flag: {stdout: "fio install failed"}
+    fio_install_flag: {stdout: "fio is not installed before executed this playbook"}
+  remote_user: zhaoshihao
+  become: yes
+  tasks:
+    # Memory info
+    - name: Get memory info
+      shell: free -h | awk '/^Mem:/{print $2}' || echo 'ERROR'
+      register: memory_info
+    - name: Get swap info
+      shell: free -h | awk '/^Swap:/{print $2}' || echo 'ERROR'
+      register: swap_info
+    # CPU info
+    - name: Get cpu info
+      shell: grep -c ^processor /proc/cpuinfo || echo 'ERROR'
+      register: cpu_num
+    - name: Get cpu isa
+      shell: grep -w 'flags\s*:\s*\S*' /proc/cpuinfo | head -n 1 | grep -w 'avx' | grep -w 'avx2' | grep -w 'sse4_2' | grep -w 'popcnt' > /dev/null 2>&1 && echo 'Normal' || echo 'ERROR'
+      register: cpu_isa_info
+    - name: Get cpu arch
+      shell: uname -m
+      register: cpu_arch
+    # IP info
+    - name: Get ip info
+      shell: ip a | awk '($1=="inet") {print $2}' | cut -d '/' -f 1 | grep -v 127.0.0.1 | tr '\n' ' '|| echo "ERROR"
+      register: ip_info
+    # yum info
+    - name: yum info
+      yum: 
+        name: fio
+        state: present
+      register: yum_flag
+#    - debug:
+#        msg: "yum_flag: {{yum_flag}}"
+    - debug:
+        msg: "yum_flag['results']: {{yum_flag.results}}"
+    - name: print fio install status is true
+      command: echo "fio install success"
+      when: yum_flag["failed"] == False
+      register: fio_flag
+    - name: print if fio is already installed
+      command: echo "fio is already installed before executed this playbook"
+      when: yum_flag["results"][0] == 'fio-3.7-2.el7.x86_64 providing fio is already installed'
+      register: fio_install_flag
+    - name: check yum if fio is already installed before executed this playbook
+      shell: yum makecache 2>&1 > /dev/null && echo "yum status is true" || echo "yum status is false"
+      register: yum_flag
+      when: yum_flag["results"][0] == 'fio-3.7-2.el7.x86_64 providing fio is already installed'
+
+    # output
+    - debug:
+        msg: "Memory: {{ memory_info.stdout }}    Swap: {{swap_info.stdout}}    IP: {{ip_info.stdout}}     CPU_info: {CPU_num: {{cpu_num.stdout}} CPU_isa: {{cpu_isa_info.stdout}} CPU_arch: {{cpu_arch.stdout}}}    fio_info: {{ fio_flag.stdout }}    yum_info: {{ yum_flag.stdout }}"
+    - debug:
+        msg: "yum_info: {{ yum_flag.stdout }}"
+    #- debug:
+     #   msg: "yum_info: {{ yum_flag['failed'] }}"
+    #- debug:
+        #msg: "Cpuinfo: {{ cpu_num.stdout }}"

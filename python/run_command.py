@@ -63,4 +63,4 @@ class run_command():
             command_output = self.run_cmd(command)
             return command_output
 
-print(run_command().run_command_sudo('ls -l /tmp/'))
+print(run_command().run_command_sudo('ls -l /tmp/aaa'))
