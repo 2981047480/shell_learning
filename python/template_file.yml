@@ -1,0 +1,14 @@
+steps:
+{% block step %}
+- name: hello_template
+  module_name: hello_template
+  cname: "\u793A\u4F8B"
+  class_name: gen_template
+  yaml_args:
+    message: "$message"
+  file_path: {{ file_path }}
+  exec_status: Done
+{% endblock %}
+{% for step_message in messages %}
+{{ self.step() }}
+{% endfor %}
