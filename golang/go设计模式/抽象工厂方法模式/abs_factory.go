@@ -12,66 +12,50 @@ type AbsBanana interface {
 	ShowBanana()
 }
 
-type CreateChinaApple interface {
-	CreateApple()
+type Apple struct{}
+type Banana struct{}
+
+func (a *Apple) ShowApple() {
+	fmt.Println("I am an apple")
+}
+func (b *Banana) ShowBanana() {
+	fmt.Println("I am a banana")
 }
 
-type CreateChinaBanana interface {
-	CreateBanana()
+type CreateFruitFactory interface {
+	CreateApple() *AbsApple
+	CreateBanana() *AbsBanana
 }
 
-type CreateAmiricaApple interface {
-	CreateApple()
+type AmericaFactory struct{}
+
+func (aa *AmericaFactory) CreateApple() *Apple {
+	return new(Apple)
 }
 
-type CreateAmericaBanana interface {
-	CreateBanana()
+func (ab *AmericaFactory) CreateBanana() *Banana {
+	return new(Banana)
 }
 
-type Apple struct {
-	Fruit
-}
-type Banana struct {
-	Fruit
+type ChinaFactory struct{}
+
+func (cb *ChinaFactory) CreateBanana() *Banana {
+	return new(Banana)
 }
 
-type ChinaApple struct {
-	AbsApple
-}
-type ChinaBanana struct {
-	AbsBanana
-}
-
-func (ca *ChinaApple) ShowApple() {
-	fmt.Println("I'm a China apple")
-}
-
-func (cb *ChinaBanana) ShowBanana() {
-	fmt.Println("I'm a China banana")
-}
-
-type AmeracaApple struct {
-	AbsApple
-}
-
-type AmeracaBanana struct {
-	AbsBanana
-}
-
-func (aa *AmeracaApple) ShowApple() {
-	fmt.Println("I'm a Ameraca apple")
-}
-
-func (ab *AmeracaBanana) ShowBanana() {
-	fmt.Println("I'm a Ameraca banana")
-}
-
-func (ca *CreateChinaApple) CreateApple() (ca *Apple) {
-	ca = new(Apple)
-	ca.Fruit = new(ChinaApple)
-	return ca
+func (ca *ChinaFactory) CreateApple() *Apple {
+	return new(Apple)
 }
 
 func main() {
-	ca = new(ChinaApple)
+	af := new(AmericaFactory)
+	aa := af.CreateApple()
+	aa.ShowApple()
+	ab := af.CreateBanana()
+	ab.ShowBanana()
+	cf := new(ChinaFactory)
+	ca := cf.CreateApple()
+	ca.ShowApple()
+	cb := cf.CreateBanana()
+	cb.ShowBanana()
 }
