@@ -1,0 +1,12 @@
+go 1.21.4
+
+use (
+	./golang
+	./golang/basic_tools/get_json
+	./golang/basic_tools/get_json/get_file_content
+	// ./golang/basic_tools/gjson/src
+	// ./golang/basic_tools/gjson/src/get_file_content
+	./golang/go设计模式/单例模式
+	./golang/go设计模式/工厂方法模式
+	./golang/go设计模式/简单工厂模式
+)

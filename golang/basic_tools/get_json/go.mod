@@ -1,6 +1,6 @@
-module example.com/m/v2
+module get_json
 
-go 1.18
+go 1.21.4
 
 require github.com/tidwall/gjson v1.17.0
 
