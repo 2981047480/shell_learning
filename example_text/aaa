@@ -1,3 +1,11 @@
-1.1.1.1 node0
-2.2.2.2 node1
-3.3.3.3 node2
+{
+    "name":{"first":"Tom", "last": "Anderson"},
+    "age": 37,
+    "children": ["Sara", "Alex", "Jack"],
+    "fav.movie": "Dear Hunter",
+    "friends": [
+      {"first": "Dale", "last":"Murphy", "age": 44, "nets": ["ig", "fb", "tw"]},
+      {"first": "Roger", "last": "Craig", "age": 68, "nets": ["fb", "tw"]},
+      {"first": "Jane", "last": "Murphy", "age": 47, "nets": ["ig", "tw"]}
+    ]
+  }

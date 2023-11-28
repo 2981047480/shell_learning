@@ -1,6 +1,6 @@
 module get_json
 
-go 1.21.4
+go 1.18
 
 require github.com/tidwall/gjson v1.17.0
 

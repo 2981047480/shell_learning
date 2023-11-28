@@ -19,7 +19,7 @@ type Factory struct {
 	filename any
 }
 
-func Panic_do(f func(any) (a any), a *any) any {
+func Panic_do(f func(a any) (res string), a any) any {
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println(err)
@@ -33,33 +33,22 @@ func GetFactory() *Factory {
 	return new(Factory)
 }
 
-func (fac *Factory) Read_File(filename any) any {
-	content, read_err := os.ReadFile(string(filename))
+func (fac *Factory) Read_File(filename string) string {
+	content, read_err := os.ReadFile(filename)
 	if read_err != nil {
 		// fmt.Println("Couldn't read file, error: ", read_err)
 		// err_msg := "Couldn't read file, error: " + read_err.Error()
 		// return "", err_msg
 		panic("Couldn't read file, error: " + read_err.Error())
 	}
-	return any(content)
+	return string(content)
 }
 
-// func (fac *Factory) Read_File(filename any) (any, error_msg) {
-// 	content, read_err := os.ReadFile(filename)
-// 	if read_err != nil {
-// 		// fmt.Println("Couldn't read file, error: ", read_err)
-// 		// err_msg := "Couldn't read file, error: " + read_err.Error()
-// 		// return "", err_msg
-// 		panic("Couldn't read file, error: " + read_err.Error())
-// 	}
-// 	return any(content), nil
-// }
-
-func (f *Factory) PrintFileContent(filename any) {
+func (f *Factory) PrintFileContent(filename string) {
 	content, read_err := os.ReadFile(filename)
 	if read_err != nil {
 		fmt.Println("Couldn't read file, error: ", read_err)
 		// return fa.content
 	}
-	fmt.Println(any(content))
+	fmt.Println(any(string(content)))
 }
