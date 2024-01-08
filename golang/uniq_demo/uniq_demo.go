@@ -48,5 +48,5 @@ func main() {
 	list := my_scanner.Scan()
 	for _, v := range list {
 		fmt.Println(v)
-	}
+	} 
 }
