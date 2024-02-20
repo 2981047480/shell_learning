@@ -32,29 +32,7 @@ func FindPeak(arr []int) (index int) {
 		} else {
 			return middle
 		}
-		// var leftval = -2 ^ 31
-		// var rightval = -2 ^ 31
-		// if middle == 0 {
-		// 	leftval = -2 ^ 31
-		// } else {
-		// 	leftval = arr[middle-1]
-		// }
-		// if middle == len(arr)-1 {
-		// 	rightval = -2 ^ 31
-		// } else {
-		// 	rightval = arr[middle+1]
-		// }
-		// if arr[middle] > leftval && arr[middle] > rightval {
-		// 	return middle
-		// } else if arr[middle] < leftval {
-		// 	right = middle - 1
-		// 	index = middle
-		// } else if arr[middle] < rightval {
-		// 	left = middle + 1
-		// 	index = middle
-		// }
 	}
-	// fmt.Println(arr, index)
 	return index
 }
 
