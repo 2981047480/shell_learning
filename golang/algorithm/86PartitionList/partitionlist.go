@@ -1,42 +1,52 @@
 package main
 
+import "fmt"
+
 type ListNode struct {
 	Val  int
 	Next *ListNode
 }
 
-func partition(list *ListNode, x int) *ListNode {
-	if list == nil {
-		return list
+func CreateNewList() *ListNode {
+	head := new(ListNode)
+	now := head
+	for i := 0; i < 10; i++ {
+		node := new(ListNode)
+		node.Val = i
+		now.Next = node
+		now = now.Next
 	}
-	var head1 = new(ListNode)
-	var list1 = new(ListNode)
-	list1.Next = nil
-	head1 = list1
-	var head2 = new(ListNode)
-	var list2 = new(ListNode)
-	list2.Next = nil
-	head2 = list2
-	var next = new(ListNode)
-	for list != nil {
-		if list.Val < x {
-			next = list
-			list = list.Next
-			next.Next = list1.Next
-			list1.Next = next
-			list1 = list1.Next
+	now.Next = nil
+	return head.Next
+}
+
+func partition(head *ListNode, x int) *ListNode {
+	if head == nil {
+		return head
+	}
+	var smalltail = new(ListNode)
+	var bigtail = new(ListNode)
+	smallhead := smalltail // 新建链表的头
+	bighead := bigtail     // 现有链表的头
+	for now := head; now != nil; now = now.Next {
+		if now.Val < x {
+			smalltail.Next = now
+			smalltail = smalltail.Next
 		} else {
-			next = list
-			list = list.Next
-			next.Next = list2.Next
-			list2.Next = next
-			list2 = list2.Next
+			bigtail.Next = now
+			bigtail = bigtail.Next
 		}
 	}
-	list1.Next = head2.Next
-	return head1.Next
+	smalltail.Next = bighead.Next
+	bigtail.Next = nil
+	return smallhead.Next
 }
 
 func main() {
-
+	tail1 := CreateNewList()
+	list2 := partition(tail1, 3)
+	for list2 != nil {
+		fmt.Println(list2.Val)
+		list2 = list2.Next
+	}
 }
