@@ -33,11 +33,7 @@ func partition(list *ListNode, x int) *ListNode {
 			list2 = list2.Next
 		}
 	}
-	next = head1
-	for next.Next != nil {
-		next = next.Next
-	}
-	next.Next = head2.Next
+	list1.Next = head2.Next
 	return head1.Next
 }
 
