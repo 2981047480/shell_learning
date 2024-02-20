@@ -6,6 +6,7 @@ import (
 	"example.com/m/v2/algorithm/list"
 )
 
+// 测试链接 : https://leetcode.cn/problems/merge-two-sorted-lists/
 func merge(list1 *list.ListNode, list2 *list.ListNode) *list.ListNode {
 	if list1 == nil {
 		return list2
