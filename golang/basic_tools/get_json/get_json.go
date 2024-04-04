@@ -17,7 +17,7 @@ func main() {
 	fa := get_file_content.GetFactory()
 	file := "/Users/zhaozephyr/shell_learning/shell_learning/example_text/aaa"
 	content := fa.Read_File(file)
-	json := `{"info":[{"name":"dj", "age":18},{"phone":"123456789","email":"dj@example.com"}]}`
+	json = `{"info":[{"name":"dj", "age":18},{"phone":"123456789","email":"dj@example.com"}]}`
 	fmt.Println((content))
 	fmt.Println(gjson.Get(content, "friends.#").String())                                        // #用来显示元素的长度
 	fmt.Println(gjson.Get(content, "friends.0").String())                                        // 用来打印friends里面的第一个元素

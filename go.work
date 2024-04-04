@@ -1,9 +1,10 @@
-go 1.18
+go 1.21.4
 
 use (
 	./golang
 	./golang/basic_tools/get_json
 	./golang/basic_tools/get_json/get_file_content
+	./golang/gateway
 	// ./golang/basic_tools/gjson/src
 	// ./golang/basic_tools/gjson/src/get_file_content
 	./golang/go设计模式/单例模式

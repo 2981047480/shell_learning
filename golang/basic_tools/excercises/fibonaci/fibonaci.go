@@ -7,5 +7,6 @@ func main() {
 	for j < 100 {
 		fmt.Println(j)
 		i, j = i+j, i
+		copy(dst []Type, src []Type)
 	}
 }
