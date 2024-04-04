@@ -4,28 +4,18 @@ import (
 	"context"
 	"net/http"
 
+	"example.com/m/v2/k8s-manager/handler/common"
 	"github.com/gin-gonic/gin"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/tools/clientcmd"
 )
 
 // 定义list，获取NodeList的接口
 func List(ctx *gin.Context) {
 	// 首先配置kubeconfig，得到client对象
-	kubeConfigPath := "/Users/eleven/Documents/zsh/shell_learning/golang/k8s-manager/conf/kube/config"
-	config, err := clientcmd.BuildConfigFromFlags("", kubeConfigPath)
+	clientSet, err := common.GetClientSet()
 	if err != nil {
 		ctx.JSON(http.StatusOK, gin.H{
 			"code":    10001,
-			"message": err.Error(),
-		})
-		return
-	}
-	clientSet, err := kubernetes.NewForConfig(config)
-	if err != nil {
-		ctx.JSON(http.StatusOK, gin.H{
-			"code":    10002,
 			"message": err.Error(),
 		})
 		return
