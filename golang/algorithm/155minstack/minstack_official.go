@@ -1,3 +1,5 @@
+package minstack_quickly
+
 type MinStack struct {
 	data [][2]int
 }

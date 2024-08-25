@@ -1,4 +1,4 @@
-package minstack_quickly
+package minstack
 
 type MinStack struct {
 	datastack []int

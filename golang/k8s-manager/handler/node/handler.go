@@ -13,6 +13,7 @@ func List(ctx *gin.Context) {
 		"data": "node list",
 	})
 }
+// 有了List，我们还需要定义一个路由来暴露这个方法 
 
 // // 定义获取NodeList的接口
 // type GetNodeListHandler interface {
